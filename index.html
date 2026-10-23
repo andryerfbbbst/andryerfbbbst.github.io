@@ -98,3 +98,215 @@
         /* Розово-красный неоновый заголовок */
         h1 {
             color: #ffffff;
+            font-size: 2.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            text-align: center;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            0% {
+                text-shadow: 
+                    0 0 5px rgba(255, 75, 120, 0.6),
+                    0 0 10px rgba(255, 20, 80, 0.4);
+            }
+            100% {
+                text-shadow: 
+                    0 0 10px rgba(255, 75, 120, 1),
+                    0 0 25px rgba(255, 20, 80, 0.8),
+                    0 0 45px rgba(255, 0, 60, 0.6);
+            }
+        }
+
+        p.subtitle {
+            color: #b5828d;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Карточки */
+        .card {
+            background-color: rgba(20, 5, 10, 0.88);
+            backdrop-filter: blur(10px);
+            border: 1px solid #3d121c;
+            border-radius: 14px;
+            padding: 14px 20px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 14px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            animation: cardGlow 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes cardGlow {
+            0% {
+                border-color: #3d121c;
+                box-shadow: 0 0 8px rgba(255, 75, 120, 0.05);
+            }
+            100% {
+                border-color: #7a2438;
+                box-shadow: 0 0 18px rgba(255, 75, 120, 0.2);
+            }
+        }
+
+        .card:hover {
+            border-color: #ff4b78;
+            background-color: rgba(35, 8, 18, 0.95);
+            box-shadow: 0 0 25px rgba(255, 75, 120, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .phone-card {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .map-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 16px;
+            text-align: left;
+        }
+
+        .map-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #ffffff;
+        }
+
+        .map-subtitle {
+            color: #b5828d;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 160px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #3d121c;
+            filter: grayscale(100%) invert(92%) contrast(83%) sepia(50%) hue-rotate(-50deg);
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .map-footer {
+            width: 100%;
+            text-align: center;
+            color: #b5828d;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .map-footer:hover {
+            color: #ff4b78;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Сетка фона с кошечками -->
+    <div id="bg-grid"></div>
+
+    <div class="container">
+        <h1>andryerfb</h1>
+        <p class="subtitle">Мои ссылки</p>
+
+        <!-- Telegram -->
+        <a href="https://t.me/chalawka" class="card" target="_blank">
+            Telegram: @chalawka
+        </a>
+
+        <!-- Номер телефона -->
+        <div class="card phone-card">
+            <span>📞</span> +222 4165 7067
+        </div>
+
+        <!-- Карта Голливуда -->
+        <div class="card map-card">
+            <div class="map-title">📍 USA</div>
+            <div class="map-subtitle">Hollywood, Los Angeles, California</div>
+            
+            <div class="map-frame">
+                <iframe 
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-118.3400%2C34.0900%2C-118.3100%2C34.1100&amp;layer=mapnik" 
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <a href="https://www.openstreetmap.org/#map=15/34.1016/-118.3268" target="_blank" class="map-footer">
+                Открыть карту
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // SVG иконка кошечки с ушками, глазками и усиками
+        const catSvg = `
+        <svg viewBox="0 0 100 100">
+            <!-- Ушки -->
+            <path d="M 28 35 L 15 12 L 42 28" />
+            <path d="M 72 35 L 85 12 L 58 28" />
+            <!-- Голова -->
+            <path d="M 32 30 C 25 30, 18 45, 22 62 C 26 78, 40 88, 50 88 C 60 88, 74 78, 78 62 C 82 45, 75 30, 68 30 Z" />
+            <!-- Глаза -->
+            <path d="M 36 48 Q 40 44 44 48" />
+            <path d="M 56 48 Q 60 44 64 48" />
+            <!-- Носик и ротик -->
+            <path d="M 47 58 L 53 58 L 50 62 Z" />
+            <!-- Усики -->
+            <path d="M 35 68 L 22 66" />
+            <path d="M 35 72 L 18 73" />
+            <path d="M 65 68 L 78 66" />
+            <path d="M 65 72 L 82 73" />
+        </svg>`;
+
+        const bgGrid = document.getElementById('bg-grid');
+        
+        // Вычисляем сколько элементов поместится на экран
+        const cols = Math.ceil(window.innerWidth / 85);
+        const rows = Math.ceil(window.innerHeight / 85);
+        const totalIcons = cols * rows;
+
+        for (let i = 0; i < totalIcons; i++) {
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'bg-icon';
+            iconDiv.innerHTML = catSvg;
+
+            // Случайным образом назначаем загорающиеся иконки (как гирлянда)
+            if (Math.random() > 0.45) {
+                iconDiv.classList.add('glow');
+                // Рандомная задержка анимации
+                const delay = (Math.random() * 5).toFixed(2);
+                const duration = (2.5 + Math.random() * 2.5).toFixed(2);
+                iconDiv.style.animationDelay = `${delay}s`;
+                iconDiv.style.animationDuration = `${duration}s`;
+            }
+
+            bgGrid.appendChild(iconDiv);
+        }
+    </script>
+</body>
+</html>

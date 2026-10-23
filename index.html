@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>andryerfb</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            background: linear-gradient(135deg, #140306 0%, #1f050c 50%, #0a0103 100%);
+            background-color: #140306;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Фоновая сетка с иконками кошечек */
+        #bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            grid-auto-rows: 70px;
+            gap: 15px;
+            padding: 10px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+
+        .bg-icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.15;
+            transition: opacity 0.5s ease, filter 0.5s ease;
+        }
+
+        .bg-icon svg {
+            width: 42px;
+            height: 42px;
+            fill: none;
+            stroke: #8a4a58;
+            stroke-width: 1.8;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+        }
+
+        /* Эффект гирлянды: розово-красное неоновое вспыхивание */
+        .bg-icon.glow {
+            animation: flickerGlow 3.5s infinite ease-in-out;
+        }
+
+        @keyframes flickerGlow {
+            0%, 100% {
+                opacity: 0.15;
+                filter: none;
+            }
+            50% {
+                opacity: 0.95;
+                filter: drop-shadow(0 0 8px rgba(255, 75, 120, 0.9)) 
+                        drop-shadow(0 0 18px rgba(255, 20, 80, 0.6));
+            }
+        }
+
+        .bg-icon.glow svg {
+            stroke: #ff4b78;
+        }
+
+        /* Контент сайта над фоном */
+        .container {
+            width: 100%;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Розово-красный неоновый заголовок */
+        h1 {
+            color: #ffffff;
